@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+        <div class="conteiner">
+            <ui:composition template="template.xhtml">
+                <ui:define name="content">
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+
+
+                    <h:form id="formDataTable">
+                        <p:dataTable id="basicDT" var="venta" value="#{VentaBean.list}"
+                                     paginator="true" paginatorPosition="bottom"
+                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+                            <f:facet name="header">
+                                Ventas
+
+                                <p:commandButton id="toggler" type="button" value="Columnas" style="float:right" icon="ui-icon-calculator" />
+                                <p:columnToggler datasource="basicDT" trigger="toggler" />
+                            </f:facet>
+                            <p:column headerText="Nombre Usuario" filterBy="#{venta[0]}" sortBy="#{venta[0]}" filterMatchMode="contains">
+                                <h:outputText value="#{venta[0]}" />
+                            </p:column>
+                            <p:column headerText="Titulo Libro" filterBy="#{venta[1]}" sortBy="#{venta[1]}" filterMatchMode="contains">
+                                <h:outputText value="#{venta[1]}" />
+                            </p:column>
+                            <p:column headerText="Precio Libro" filterBy="#{venta[2]}" sortBy="#{venta[2]}" filterMatchMode="contains">
+                                <h:outputText value="#{venta[2]}" />
+                            </p:column>
+                            <p:column headerText="Cantidad Comprada" filterBy="#{venta[3]}" sortBy="#{venta[3]}" filterMatchMode="contains">
+                                <h:outputText value="#{venta[3]}" />
+                            </p:column>
+                            <p:column headerText="Total Venta" filterBy="#{venta[4]}" sortBy="#{venta[4]}" filterMatchMode="contains">
+                                <h:outputText value="#{venta[4]}" />
+                            </p:column>
+                            <p:column headerText="Fecha Venta" filterBy="#{venta[5]}" sortBy="#{venta[5]}" filterMatchMode="contains">
+                                <h:outputText value="#{venta[5]}" />
+                            </p:column>
+
+                        </p:dataTable>
+
+                    </h:form>
+
+                </ui:define>        
+            </ui:composition>
+        </div>
+
+    </body>
+</html>

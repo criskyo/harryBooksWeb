@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 16/09/2017 02:12:58 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="harrybooksbd" name="co.com.harrybooksweb.model.Usuario" optimistic-lock="version" table="usuario">
+    <id name="idUsuario" type="int">
+      <column name="id_usuario"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="nombreUsuario" type="string">
+      <column length="45" name="nombre_usuario"/>
+    </property>
+    <property name="estadoUsuario" type="java.lang.Integer">
+      <column name="estado_usuario"/>
+    </property>
+    <property name="perfilUsuario" type="java.lang.Integer">
+      <column name="perfil_usuario"/>
+    </property>
+    <property name="contrasenaUsuario" type="string">
+      <column length="45" name="contrasena_usuario"/>
+    </property>
+  </class>
+</hibernate-mapping>

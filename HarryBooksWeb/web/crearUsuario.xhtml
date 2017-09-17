@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+        <div class="conteiner">
+            <ui:composition template="template.xhtml">
+                <ui:define name="content">
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                    <h:form>
+                        <p:commandButton id="btnCreateCliente" update=":formCreate" oncomplete="PF('dialogClienteCreate').show()" title="Crear"  value="Crear Cliente"/>
+                    </h:form>
+
+                    <h:form id="formDataTable">
+                        <p:dataTable id="basicDT" var="cliente" value="#{usuarioBean.usuarios}"
+                                     paginator="true" paginatorPosition="bottom"
+                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+                            <p:column headerText="Id">
+                                <h:outputText value="#{cliente.idUsuario}" />
+                            </p:column>
+                            <p:column headerText="Nombre">
+                                <h:outputText value="#{cliente.nombreUsuario}" />
+                            </p:column>
+                            <p:column headerText="Estado">
+                                <h:outputText value="#{cliente.estadoUsuario}" />
+                            </p:column>
+                            <p:column headerText="Perfil">
+                                <h:outputText value="#{cliente.perfilUsuario}" />
+                            </p:column>
+                            <p:column headerText="Contraseña">
+                                <h:outputText value="#{cliente.contrasenaUsuario}" />
+                            </p:column>
+
+
+                        </p:dataTable>
+                        <p:dialog header="Create Cliente" widgetVar="dialogClienteCreate" modal="true" showEffect="fade" hideEffect="fade" resizable="false" id="dlgClienteCreate" >
+                            <p:panelGrid  id="display" columns="2" style="margin:0 auto;">
+
+                                <h:outputLabel for="id" value="id:" />
+                                <p:inputText id="id" value="#{usuarioBean.usuario1.idUsuario}" required="true" label="id" />
+
+
+                                <h:outputLabel for="name" value="Nombre:" />
+                                <p:inputText id="name" value="#{usuarioBean.usuario1.nombreUsuario}" required="true" label="name" />
+
+
+
+                                <h:outputLabel for="ci" value="Estado:" />
+                                <p:inputText id="ci" value="#{usuarioBean.usuario1.estadoUsuario}" required="true" label="name" />
+
+                                <h:outputLabel for="email" value="Perfil usuario:" />
+                                <p:inputText id="email" value="#{usuarioBean.usuario1.perfilUsuario}" required="true" label="name" />
+
+                                <h:outputLabel for="direccion" value="Contraseña:" />
+                                <p:inputText id="dieccion" value="#{usuarioBean.usuario1.contrasenaUsuario}" required="true" label="name" />
+
+
+                                <f:facet name="footer">
+                                    <p:commandButton value="Crear Cliente" actionListener="#{usuarioBean.btnCreateCliente(event)}" update="basicDT"
+                                                     />
+                                    <p:commandButton id="btnCreateCancelar"  oncomplete="PF('dialogClienteCreate').hide()" title="Cancelar"  value="Cancelar" update="basicDT"/>
+                                </f:facet> 
+                            </p:panelGrid>
+                        </p:dialog>
+                    </h:form>
+
+                    <h:form id="formCreate">
+
+
+                    </h:form>
+
+
+
+
+                </ui:define>        
+            </ui:composition>
+        </div>
+
+    </body>
+</html>

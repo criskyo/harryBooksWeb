@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Login</title>
+        <link href="resources/css/login.css" type="text/css" rel="stylesheet"/>
+    </h:head>
+    <h:body>
+        <div id="menu">
+            <h:form>
+                <p:menubar >
+                    <f:facet name="options">
+                        <p:commandButton value="Registrarse" action="registro?faces-redirect=true" ajax="false"/>
+                    </f:facet>
+                </p:menubar>
+            </h:form>
+        </div>
+
+        <div class="conteiner">
+
+            <h:form id="formLogin">
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                <p:panel header="Ingresar Usuario y Clave">
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputLabel for="username" value="Usuario:" />
+                        <p:inputText id="username" value="#{loginBean.usuario.nombreUsuario}" required="true" label="username" />
+
+                        <h:outputLabel for="password" value="Clave:" />
+                        <p:password id="password" value="#{loginBean.usuario.contrasenaUsuario}" required="true" label="password" />
+
+                        <f:facet name="footer">
+                            <p:commandButton value="Login"  action="#{loginBean.login()}"/>
+                        </f:facet>
+                    </h:panelGrid>
+
+                </p:panel>
+            </h:form>
+        </div>
+
+    </h:body>
+</html>
+
